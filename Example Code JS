@@ -1,0 +1,25 @@
+// Example of a basic Node.js and Express web app
+const express = require('express');
+const app = express();
+const port = 3000;
+
+// Middleware for handling POST requests
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// Example of a GET request handler
+app.get('/', (req, res) => {
+  res.send('Hello, World!');
+});
+
+// Example of a POST request handler
+app.post('/api/data', (req, res) => {
+  const data = req.body;
+  console.log('Received POST request:', data);
+  res.json({ status: 'success', data });
+});
+
+// Start the server
+app.listen(port, () => {
+  console.log(`Server is running at http://localhost:${port}`);
+});
